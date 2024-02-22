@@ -40,7 +40,7 @@ function shoppingCartReducer(state, action) {
     };
   }
   if (action.type === "UPDATE_ITEM") {
-    const updatedItems = [...prevShoppingCart.items];
+    const updatedItems = [...state.items];
     const updatedItemIndex = updatedItems.findIndex(
       (item) => item.id === action.payload.productId
     );
@@ -78,7 +78,7 @@ export default function CartContextProvider({ children }) {
   }
 
   function handleUpdateCartItemQuantity(productId, amount) {
-    shoppoingCartDispatch({
+    dispatchCartAction({
       type: "UPDATE_ITEM",
       payload: { productId, amount },
     });
